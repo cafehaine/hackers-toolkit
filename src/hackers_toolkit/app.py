@@ -45,7 +45,9 @@ class HackersToolkit(toga.App):
         We then create a main window (with a name matching the app), and
         show the main window.
         """
-        tool_tree = toga.Tree(["Tools"], on_select=self.on_tree_select)
+        tool_tree = toga.Tree(
+            ["Tools"], on_select=self.on_tree_select, style=Pack(width=200)
+        )
         tool_list = list(ALL_TOOLS)
 
         categories = set()
@@ -63,8 +65,8 @@ class HackersToolkit(toga.App):
             for category in tool.categories:
                 tool_tree.data.append(category_nodes[category], tool.name)
 
-        self.tool_box = toga.Box()
-        main_box = toga.Box(children=[tool_tree, self.tool_box])
+        self.tool_box = toga.Box(style=Pack(flex=1))
+        main_box = toga.Box(children=[tool_tree, self.tool_box], style=Pack(flex=1))
 
         self.main_window = toga.MainWindow(title=self.formal_name)
         self.main_window.content = main_box

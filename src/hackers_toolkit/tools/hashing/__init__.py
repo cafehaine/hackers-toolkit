@@ -29,7 +29,7 @@ class HashText(BaseTool):
     def build_ui(self) -> Widget:
         hash_selection = Selection(items=list(HASH_FUNCTIONS))
         text_input = MultilineTextInput()
-        output_field = TextInput(readonly=True)
+        output_field = MultilineTextInput(readonly=True)
 
         def compute_hash(_button: Widget):
             hash_result = HASH_FUNCTIONS[hash_selection.value](
@@ -47,7 +47,7 @@ class HashText(BaseTool):
                 Label("Output:"),
                 output_field,
             ],
-            style=Pack(direction=COLUMN),
+            style=Pack(direction=COLUMN, flex=1),
         )
 
 
@@ -58,8 +58,8 @@ class HashFiles(BaseTool):
 
     def build_ui(self) -> Widget:
         hash_selection = Selection(items=list(HASH_FUNCTIONS))
-        file_input = TextInput(readonly=True)
-        output_field = TextInput(readonly=True)
+        file_input = TextInput(readonly=True, style=Pack(flex=1))
+        output_field = MultilineTextInput(readonly=True)
 
         def select_file(_button: Widget) -> None:
             try:
@@ -80,10 +80,13 @@ class HashFiles(BaseTool):
                 Label("Hashing algorithm:"),
                 hash_selection,
                 Label("Input:"),
-                Box(children=[file_input, Button("Select file", on_press=select_file)]),
+                Box(
+                    children=[file_input, Button("Select file", on_press=select_file)],
+                    style=Pack(flex=1),
+                ),
                 Button("Compute hash", on_press=compute_hash),
                 Label("Output:"),
                 output_field,
             ],
-            style=Pack(direction=COLUMN),
+            style=Pack(direction=COLUMN, flex=1),
         )
