@@ -11,6 +11,7 @@ from toga.style.pack import COLUMN, ROW
 from .tools import ALL_TOOLS
 from .tools.utils import BaseTool, DummyTool
 
+
 class HackersToolkit(toga.App):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
@@ -19,7 +20,7 @@ class HackersToolkit(toga.App):
 
     def on_tree_select(self, widget: toga.Widget, node: Optional[Node]):
         if not hasattr(self, "dummy_tool"):
-            return # Startup function not yet run.
+            return  # Startup function not yet run.
 
         for child in self.tool_box.children:
             self.tool_box.remove(child)
@@ -44,7 +45,7 @@ class HackersToolkit(toga.App):
         We then create a main window (with a name matching the app), and
         show the main window.
         """
-        tool_tree = toga.Tree(["Tools"], on_select = self.on_tree_select)
+        tool_tree = toga.Tree(["Tools"], on_select=self.on_tree_select)
         tool_list = list(ALL_TOOLS)
 
         categories = set()
