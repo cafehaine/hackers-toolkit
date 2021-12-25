@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Briefcase-Version: 0.3.5
+Name: hackers-toolkit
+Formal-Name: Hacker's Toolkit
+App-ID: eu.cafehaine.hackers-toolkit.hackers-toolkit
+Version: 0.0.1
+Home-page: https://github.com/cafehaine/hackers-toolkit
+Author: CaféHaine
+Author-email: kilian.guillaume@gmail.com
+Summary: A set of tools for developers and hackers.
